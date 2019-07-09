@@ -30,7 +30,7 @@ The fix for the pipeline is preliminary used in linux environment with conda/sin
 For downloading repository & creating evnironment:
 
 ```bash
-# The script expects to be run from the /DATA/YOUR_USER_NAME folder so first move into that folder.
+# The script expects to be run from the /DATA/YOUR_USER_NAME folder so first move into that folder (eg. t.severson).
 cd /DATA/YOUR_USER_NAME
 
 # Download enviroment for running pipeline
