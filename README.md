@@ -1,7 +1,8 @@
 # This is a fix for RHPC conda update and clean that destroyed all hardlinks for ChIP-seq analysis pipeline based on snakemake
 
 
-This is fix for the original snakemake-based Peak calling pipeline from Yongsoo Kim 
+
+This is a fix for the original snakemake-based Peak calling pipeline from Yongsoo Kim 
 (https://github.com/anoyaro84/snakemake_ChIPseq) used in Zwart lab at the Netherlands Cancer Institute.
 
 ##
@@ -57,7 +58,7 @@ snakemake -s PATH_TO_PIPELINE/Snakefile --use-conda --use-singularity --cores=24
 ```
 
 With --use-conda option, the pipeline will create environments to run rules based on .yaml files in env/.
-The --use-singulairty option applies only to DFilter peak caller. The singularity container holds a virtual environment of Ubuntu with DFilter installed.
+The --use-singulairty option applies only to DFilter peak caller. The singularity container which holds a virtual environment of Ubuntu with DFilter was no longer available due to the hub site being down. The image has been saved and put into a shared enviroment and called explicitly in the src/peakcalling.smk file.
 
 
 Note that the pipeline assumes that there is the following three files available at the location where the pipeline is executed:
