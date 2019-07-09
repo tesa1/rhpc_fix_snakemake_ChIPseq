@@ -36,7 +36,11 @@ cd rhpc_fix_snakemake_ChIPseq
 conda env create --file env/rhpc_fix_snakemake.yaml
 
 
-# Separately download and install bioepic package into the conda environment just created. This package could not be installed after the conda update/clean with pip from within the conda enviroment it must be installed expicitly. Replace your_user_name with your server name (eg. t.severson)
+# Separately download and install bioepic package into the conda environment just created. 
+
+This package could not be installed after the conda update/clean with pip from within the conda enviroment it must be installed expicitly. 
+
+Replace your_user_name with your server name (eg. t.severson)
 pip install -t /home/your_user_name/.conda/envs/rhpc_fix_SnakeMake/lib/python3.6/site-packages/ bioepic==0.2.5
 
 
