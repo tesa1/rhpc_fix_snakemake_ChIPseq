@@ -20,20 +20,20 @@ Note that PeakPairs.csv is used to specify ChIP-seq vs input pairs, and config.y
 ## Installation ##
 
 
-The pipeline is preliminary used in linux environment with conda/singularity available. Singularity is used  only for DFilter (one of two peak callers used) within the pipeline. Currently, the pipeline is tested with conda version 4.7.5 and singularity version 2.5.1.
+The pipeline is preliminary used in linux environment with conda/singularity available. Singularity is used  only for DFilter (one of two peak callers used) within the pipeline. Currently, the pipeline is tested with conda version 4.7.5 and singularity version 2.4.2-master.g91881f7.
 
 For downloading repository & creating evnironment:
 
 ```bash
 git clone https://github.com/tesa1/rhpc_fix_snakemake_ChIPseq
 cd rhpc_fix_snakemake_ChIPseq
-conda env create --file env/snakemake.yaml
+conda env create --file env/rhpc_fix_snakemake.yaml
 
 # install package bioepic, which no longer can be installed via pip with conda v4.5.7
 pip install -t /home/your_user_name/.conda/envs/conda_fix3_SnakeMake/lib/python3.6/site-packages/ bioepic==0.2.5
 
 
-source activate rhpc_fix_snakemake_ChIPseq
+source activate rhpc_fix_SnakeMake
 
 ```
 
