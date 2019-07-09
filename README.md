@@ -1,11 +1,14 @@
 # This is a fix for an RHPC patch Monday (July 1, 2019) which destroyed all pipeline environmental hardlink for ChIP-seq analysis pipeline based on snakemake
 
 
-This fix contains the same snakemake-based Peak calling pipeline as previously but with  some minor changes to download and run the enviroment in conda v4.7.5. 
+This fix contains the same snakemake-based Peak calling pipeline as previously but with  some minor changes to download and run the enviroment in conda version 4.7.5. 
 
 Versions of major softwares such as MACS2, MACS, DFilter, samtools, bedtools, python, etc. remain the same. 
 ##
-Taken from Yongsoo Kim, (ttps://github.com/anoyaro84): This is an snakemake-based Peak calling pipeline used in Zwart lab at the Netherlands Cancer Institute.
+
+Taken from Yongsoo Kim, (https://github.com/anoyaro84/snakemake_ChIPseq): 
+
+This is an snakemake-based Peak calling pipeline used in Zwart lab at the Netherlands Cancer Institute.
 The pipeline obtains ChIP-seq data from diverse sources (remote/local path or GEO) and process them accordingly to produce peak lists in bed format and coverage profiles in tdf format.
 
 Roughly, the pipeline takes the following steps to produce the outcome:
@@ -27,14 +30,22 @@ The pipeline is preliminary used in linux environment with conda/singularity ava
 For downloading repository & creating evnironment:
 
 ```bash
+# Download and install the pipeline
 git clone https://github.com/tesa1/rhpc_fix_snakemake_ChIPseq
 cd rhpc_fix_snakemake_ChIPseq
 conda env create --file env/rhpc_fix_snakemake.yaml
 
-# install package bioepic, which no longer can be installed via pip with conda v4.5.7
-pip install -t /home/your_user_name/.conda/envs/conda_fix3_SnakeMake/lib/python3.6/site-packages/ bioepic==0.2.5
+# Separately install additional package bioepic. This package could no longer be installed with the git clone because conda version 4.7.5 doesn't allow install via pip. 
+pip install -t /home/your_user_name/.conda/envs/rhpc_fix_SnakeMake/lib/python3.6/site-packages/ bioepic==0.2.5
 
 
+# Change the location of the singularity image of the virtual enviroment with Ubuntu and DFilter in the peakcalling.smk file. The original singularity container could no longer be executed because singularity hub is down. An image of the enviroment is now used explicitly in the code.
+
+cd src
+
+
+
+# activate your enviroment
 source activate rhpc_fix_SnakeMake
 
 ```
