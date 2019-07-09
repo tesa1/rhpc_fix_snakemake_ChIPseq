@@ -1,7 +1,8 @@
-# ChIP-seq analysis pipeline based on snakemake
+# This is a fix for RHPC conda update and clean that destroyed all hardlinks for ChIP-seq analysis pipeline based on snakemake
 
 
-This is an snakemake-based Peak calling pipeline used in Zwart lab at the Netherlands Cancer Institute.
+This is fix for the original snakemake-based Peak calling pipeline from Yongsoo Kim 
+(https://github.com/anoyaro84/snakemake_ChIPseq) used in Zwart lab at the Netherlands Cancer Institute.
 The pipeline obtains ChIP-seq data from diverse sources (remote/local path or GEO) and process them accordingly to produce peak lists in bed format and coverage profiles in tdf format.
 
 Roughly, the pipeline takes the following steps to produce the outcome:
@@ -18,7 +19,7 @@ Note that PeakPairs.csv is used to specify ChIP-seq vs input pairs, and config.y
 ## Installation ##
 
 
-The pipeline is preliminary used in linux environment with conda/singularity available. Singularity is used  only for DFilter (one of two peak callers used) within the pipeline. Currently, the pipeline is tested with conda version 4.5.4 and singularity version 2.5.1.
+The fix for the pipeline is preliminary used in linux environment with conda/singularity available. Singularity is used  only for DFilter (one of two peak callers used) within the pipeline. Currently, the pipeline is tested with conda version 4.7.5 and singularity version 2.4.2-master.g91881f7.
 
 For downloading repository & creating evnironment:
 
