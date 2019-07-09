@@ -65,11 +65,11 @@ Phantompeak tools is included as a separate software.
 We recommend to run the pipeline from a different location than pipeline path, like below:
 
 ```bash
-snakemake -s PATH_TO_PIPELINE/Snakefile --use-conda --use-singularity --cores=24 &> run.log
+snakemake -s PATH_TO_PIPELINE/Snakefile --use-singularity --use-conda --cores=20 -p --singularity-args="-B /DATA:/DATA" &> run.log
 ```
 
 With --use-conda option, the pipeline will create environments to run rules based on .yaml files in env/.
-The --use-singulairty option applies only to DFilter peak caller. The singularity container which holds a virtual environment of Ubuntu with DFilter was no longer available due to the hub site being down. The image has been saved and put into a shared enviroment and called explicitly in the src/peakcalling.smk file.
+The --use-singulairty option applies only to DFilter peak caller. The singularity container which holds a virtual environment of Ubuntu with DFilter was no longer available due to the hub site being down. The image has been saved and put into a shared enviroment and called explicitly in the src/peakcalling.smk file. The --singularity-args allows singularity image to be in the correct enviroment (/DATA/YOUR_USER_NAME).
 
 
 Note that the pipeline assumes that there is the following three files available at the location where the pipeline is executed:
