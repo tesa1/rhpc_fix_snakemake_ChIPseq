@@ -29,22 +29,26 @@ The fix for the pipeline is preliminary used in linux environment with conda/sin
 For downloading repository & creating evnironment:
 
 ```bash
+# Download and install enviroment for running pipeline
 git clone https://github.com/tesa1/rhpc_fix_snakemake_ChIPseq/
 cd rhpc_fix_snakemake_ChIPseq
 conda env create --file env/rhpc_fix_snakemake.yaml
 
 
+# Separately download and install bioepic package into the conda environment just created. This package could not be installed after the conda update/clean with pip from within the conda enviroment it must be installed expicitly. Replace your_user_name with your server name (eg. t.severson)
+pip install -t /home/your_user_name/.conda/envs/rhpc_fix_SnakeMake/lib/python3.6/site-packages/ bioepic==0.2.5
 
-# install phantompeak tools
-git submodule init
-git submodule update
+
+# Activate your conda environment
+source activate rhpc_fix_SnakeMake
+
 ```
 
 
 
 The most of softwares used in the pipeline is installed by conda or excuted in wrapper.
 Only exception is the phantompeak, the software used for estimating the fragment length that can be used by MACS2.
-Phantompeak tools is included as a submodule, for which you can install with the last two commands.
+Phantompeak tools is included as a separate software.
 
 We recommend to run the pipeline from a different location than pipeline path, like below:
 
