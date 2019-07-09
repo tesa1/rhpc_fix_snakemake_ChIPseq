@@ -30,9 +30,17 @@ The fix for the pipeline is preliminary used in linux environment with conda/sin
 For downloading repository & creating evnironment:
 
 ```bash
-# Download and install enviroment for running pipeline
+# Download enviroment for running pipeline
 git clone https://github.com/tesa1/rhpc_fix_snakemake_ChIPseq/
 cd rhpc_fix_snakemake_ChIPseq
+
+# Copy the Singularity image file of the Ubuntu Dfilter environment to rhpc_fix_snakemake_ChIPseq folderand add the path to your script.
+scp -r /shared/wessels/t.severson/dfilterv1.5_singularity/ChIPSeq.simg .
+sed '/
+
+
+
+# install enviroment for running pipeline
 conda env create --file env/rhpc_fix_snakemake.yaml
 
 # Activate phantompeakqualtools
