@@ -1,8 +1,8 @@
 # This is a fix for an RHPC patch Monday (July 1, 2019) which destroyed all pipeline environmental hardlink for ChIP-seq analysis pipeline based on snakemake
 
 
-This fix contains the same snakemake-based Peak calling pipeline as previously but with  some changes to download and run the enviroment in conda v4.7.5. 
-
+This fix contains the same snakemake-based Peak calling pipeline as previously but with  some minor changes to download and run the enviroment in conda v4.7.5. Versions of major softwares such as MACS2, MACS, DFilter, samtools, bedtools, etc. remain the same. 
+##
 Taken from Yongsoo Kim, (ttps://github.com/anoyaro84): This is an snakemake-based Peak calling pipeline used in Zwart lab at the Netherlands Cancer Institute.
 The pipeline obtains ChIP-seq data from diverse sources (remote/local path or GEO) and process them accordingly to produce peak lists in bed format and coverage profiles in tdf format.
 
