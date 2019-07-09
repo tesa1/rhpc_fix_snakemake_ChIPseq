@@ -3,6 +3,11 @@
 
 This is fix for the original snakemake-based Peak calling pipeline from Yongsoo Kim 
 (https://github.com/anoyaro84/snakemake_ChIPseq) used in Zwart lab at the Netherlands Cancer Institute.
+
+##
+
+There have been minor changes, but the versions of major software such as MACS, MACS2, DFilter, samtools, bedtools, python, etc remain the same.
+
 The pipeline obtains ChIP-seq data from diverse sources (remote/local path or GEO) and process them accordingly to produce peak lists in bed format and coverage profiles in tdf format.
 
 Roughly, the pipeline takes the following steps to produce the outcome:
@@ -24,14 +29,18 @@ The fix for the pipeline is preliminary used in linux environment with conda/sin
 For downloading repository & creating evnironment:
 
 ```bash
-git clone https://github.com/anoyaro84/snakemake_ChIPseq
-cd snakemake_ChIPseq
-conda env create --file env/snakemake.yaml
+git clone https://github.com/tesa1/rhpc_fix_snakemake_ChIPseq/
+cd rhpc_fix_snakemake_ChIPseq
+conda env create --file env/rhpc_fix_snakemake.yaml
+
+
 
 # install phantompeak tools
 git submodule init
 git submodule update
 ```
+
+
 
 The most of softwares used in the pipeline is installed by conda or excuted in wrapper.
 Only exception is the phantompeak, the software used for estimating the fragment length that can be used by MACS2.
