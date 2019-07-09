@@ -1,0 +1,11 @@
+name: igvtool
+channels:
+- bioconda
+- defaults
+- https://repo.continuum.io/pkgs/free
+dependencies:
+- igvtools=2.3.93=0
+- openjdk=8.0.121=1
+#- openjdk
+prefix: /home/NFS/users/yo.kim/miniconda3/envs/igvtool
+
