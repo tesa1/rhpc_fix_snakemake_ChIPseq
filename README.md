@@ -35,6 +35,9 @@ git clone https://github.com/tesa1/rhpc_fix_snakemake_ChIPseq/
 cd rhpc_fix_snakemake_ChIPseq
 conda env create --file env/rhpc_fix_snakemake.yaml
 
+# Activate phantompeakqualtools
+cd Softwares/phantompeakqualtools
+chmod 777 run_spp.R
 
 # Separately download and install bioepic package into the conda environment just created. 
 
@@ -58,7 +61,7 @@ Phantompeak tools is included as a separate software.
 We recommend to run the pipeline from a different location than pipeline path, like below:
 
 ```bash
-snakemake -s PATH_TO_PIPELINE/Snakefile --use-conda --use-singularity --cores=24
+snakemake -s PATH_TO_PIPELINE/Snakefile --use-conda --use-singularity --cores=24 &> run.log
 ```
 
 With --use-conda option, the pipeline will create environments to run rules based on .yaml files in env/.
