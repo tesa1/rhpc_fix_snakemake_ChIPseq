@@ -1,0 +1,68 @@
+
+##############################################
+# Global options
+##############################################
+
+Ncores : 5
+
+##############################################
+# Path configuration                        
+##############################################
+
+path:
+    fastq:  'fastq/'
+    qc: 'qc/'
+    log:    'logs/'
+    peaks:  'peaks/'
+    bam:    'bams/'
+    output: 'output/'
+    sratools:   'Softwares/sratoolkit.2.8.0-ubuntu64/bin/'
+    edirect:    'Softwares/edirect/'
+
+##############################################
+# Software options
+##############################################
+
+bwa:
+   reflib:  '~/resource/hg19.fa'
+   extra: ''
+
+cutadapt:
+   option: ''
+
+picard:
+    options: 'VALIDATION_STRINGENCY=LENIENT'
+    threads: 5
+
+macs:
+    bw: 300
+    mfold: '10,30'
+    p_value: '1.00e-7'
+    gsize: 'hs'
+    other: '--nomodel' # for broad peak, --broad option and consider also add --broad-cutoff
+
+macs2:
+    p_or_q: 'q' # either p-value(p) or q-value(q) is used
+    thr: 0.01 # threshold for p/q-value
+    gsize: 'hs' # genome size
+    ext: 'phantom' # extension size can be fixed or inferred by phantom peaks (if 'phantom' is given)
+    outcome: 'peaks.narrowPeak' # suffix of outcome file to be used. For broad peaks, replace it with 'peaks.broadPeak'
+    others: '--nomodel' # for broad peak, --broad option and consider also add --broad-cutoff
+
+
+
+dfilter:
+   path:    'Softwares/DFilter/' # if not start with '/', it is relative to pipeline location
+   bs:  50  # bandwith parameter
+   ks:  30  # kernel size
+   others: '-refine'
+
+peakcalling: ['macs2', 'dfilter'] # now support macs, macs2, dfilter
+
+intersection: ['macs2', 'dfilter'] # outcomes of indicated peak callers are used to take intersection
+
+phantompeak:
+   path:    'Softwares/phantompeakqualtools/'
+
+igvtool:
+   genome:  'hg19'

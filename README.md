@@ -1,12 +1,5 @@
-# This is a fix for an RHPC patch Monday (July 1, 2019) which destroyed all pipeline environmental hardlink for ChIP-seq analysis pipeline based on snakemake
+# ChIP-seq analysis pipeline based on snakemake
 
-
-This fix contains the same snakemake-based Peak calling pipeline as previously but with  some minor changes to download and run the enviroment in conda version 4.7.5. 
-
-Versions of major softwares such as MACS2, MACS, DFilter, samtools, bedtools, python, etc. remain the same. 
-##
-
-Taken from Yongsoo Kim, (https://github.com/anoyaro84/snakemake_ChIPseq): 
 
 This is an snakemake-based Peak calling pipeline used in Zwart lab at the Netherlands Cancer Institute.
 The pipeline obtains ChIP-seq data from diverse sources (remote/local path or GEO) and process them accordingly to produce peak lists in bed format and coverage profiles in tdf format.
@@ -25,29 +18,18 @@ Note that PeakPairs.csv is used to specify ChIP-seq vs input pairs, and config.y
 ## Installation ##
 
 
-The pipeline is preliminary used in linux environment with conda/singularity available. Singularity is used  only for DFilter (one of two peak callers used) within the pipeline. Currently, the pipeline is tested with conda version 4.7.5 and singularity version 2.4.2-master.g91881f7.
+The pipeline is preliminary used in linux environment with conda/singularity available. Singularity is used  only for DFilter (one of two peak callers used) within the pipeline. Currently, the pipeline is tested with conda version 4.5.4 and singularity version 2.5.1.
 
 For downloading repository & creating evnironment:
 
 ```bash
-# Download and install the pipeline
-git clone https://github.com/tesa1/rhpc_fix_snakemake_ChIPseq
-cd rhpc_fix_snakemake_ChIPseq
-conda env create --file env/rhpc_fix_snakemake.yaml
+git clone https://github.com/anoyaro84/snakemake_ChIPseq
+cd snakemake_ChIPseq
+conda env create --file env/snakemake.yaml
 
-# Separately install additional package bioepic. This package could no longer be installed with the git clone because conda version 4.7.5 doesn't allow install via pip. 
-pip install -t /home/your_user_name/.conda/envs/rhpc_fix_SnakeMake/lib/python3.6/site-packages/ bioepic==0.2.5
-
-
-# Change the location of the singularity image of the virtual enviroment with Ubuntu and DFilter in the peakcalling.smk file. The original singularity container could no longer be executed because singularity hub is down. An image of the enviroment is now used explicitly in the code.
-
-cd src
-
-
-
-# activate your enviroment
-source activate rhpc_fix_SnakeMake
-
+# install phantompeak tools
+git submodule init
+git submodule update
 ```
 
 The most of softwares used in the pipeline is installed by conda or excuted in wrapper.
@@ -97,3 +79,6 @@ Note that IDs used in the PeakPairs.csv should be available in ID column of Data
 
 
 For config.yaml, you can copy it from this repository and modify the parameters based on your need.
+
+
+
