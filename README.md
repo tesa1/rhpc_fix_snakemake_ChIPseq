@@ -50,10 +50,8 @@ cd ../
 
 # Separately download and install bioepic package into the conda environment just created. 
 # This package could not be installed after the conda update/clean with pip from within the conda enviroment it must be installed explicitly
-
 #Replace YOUR_USER_NAME with your server name (eg. t.severson)
 pip install -t /home/YOUR_USER_NAME/.conda/envs/rhpc_fix_SnakeMake/lib/python3.6/site-packages/ bioepic==0.2.5
-
 
 # Activate your conda environment
 source activate rhpc_fix_SnakeMake
