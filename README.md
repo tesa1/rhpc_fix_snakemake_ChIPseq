@@ -5,6 +5,8 @@
 This is a fix for the original snakemake-based Peak calling pipeline from Yongsoo Kim 
 (https://github.com/anoyaro84/snakemake_ChIPseq) used in Zwart lab at the Netherlands Cancer Institute.
 
+I have checked the output of the fix pipeline and with previously analyzed data and there are no differences. The html document in this repository shows the results.
+
 ##
 
 There have been minor changes, but the versions of major software such as MACS, MACS2, DFilter, samtools, bedtools, python, etc remain the same.
@@ -61,7 +63,6 @@ pip install -t /home/YOUR_USER_NAME/.conda/envs/rhpc_fix_SnakeMake/lib/python3.6
 source activate rhpc_fix_SnakeMake
 
 ```
-
 
 
 The most of softwares used in the pipeline is installed by conda or excuted in wrapper.
