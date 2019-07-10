@@ -7,9 +7,9 @@ This is a fix for the original snakemake-based Peak calling pipeline from Yongso
 
 
 
-##
-
 There have been minor changes to the pipeline, but the versions of major software such as MACS, MACS2, DFilter, samtools, bedtools, python, etc remain the same. I have checked the output of the fix pipeline and with previously analyzed data and there are no differences. The html document in this repository shows the results.
+
+##
 
 The pipeline obtains ChIP-seq data from diverse sources (remote/local path or GEO) and process them accordingly to produce peak lists in bed format and coverage profiles in tdf format.
 
