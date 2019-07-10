@@ -27,7 +27,7 @@ Note that PeakPairs.csv is used to specify ChIP-seq vs input pairs, and config.y
 ## Installation ##
 
 
-The fix for the pipeline is preliminary used in linux environment with conda/singularity available. Singularity is used  only for DFilter (one of two peak callers used) within the pipeline. Currently, the pipeline is tested with *conda version 4.7.5* and singularity version 2.4.2-master.g91881f7. Note, if you are on harris, you will need to use conda version 4.7.5 in /opt/anaconda/bin/ and if you are on darwin you will need to use conda version 4.7.5 in /opt/anaconda3/bin/
+The fix for the pipeline is preliminary used in linux environment with conda/singularity available. Singularity is used  only for DFilter (one of two peak callers used) within the pipeline. Currently, the pipeline is tested with *conda version 4.7.5* and singularity version 2.4.2-master.g91881f7 on July 9th, 2019. Note, if you are on harris, you will need to use conda version 4.7.5 in /opt/anaconda/bin/ and if you are on darwin you will need to use conda version 4.7.5 in /opt/anaconda3/bin/
 
 For downloading repository & creating environment:
 
@@ -39,10 +39,10 @@ cd /DATA/YOUR_USER_NAME
 git clone https://github.com/tesa1/rhpc_fix_snakemake_ChIPseq/
 cd rhpc_fix_snakemake_ChIPseq
 
-# install enviroment for running pipeline on harris:
+# install enviroment for running pipeline on **harris**:
 /opt/anaconda/bin/conda env create --file env/rhpc_fix_snakemake.yaml
 
-# install enviroment for running pipeline on darwin:
+# install enviroment for running pipeline on **darwin**:
 /opt/anaconda3/bin/conda env create --file env/rhpc_fix_snakemake.yaml
 
 # Activate phantompeakqualtools and go back to original directory
