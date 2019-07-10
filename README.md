@@ -7,7 +7,7 @@ This is a fix for the original snakemake-based Peak calling pipeline from Yongso
 
 
 
-There have been minor changes to the pipeline, but the versions of major software such as MACS, MACS2, DFilter, samtools, bedtools, python, etc remain the same. I have checked the output of the fix pipeline and with previously analyzed data and there are no differences. The html document in this repository shows the results.
+There have been minor changes to the pipeline, but the versions of major software such as MACS, MACS2, DFilter, samtools, bedtools, python, etc remain the same. The output of the fix pipeline has been compared and with previously analyzed data and there are no differences. The html document in this repository shows the results of that analysis.
 
 ##
 
@@ -19,7 +19,7 @@ Roughly, the pipeline takes the following steps to produce the outcome:
 - Alignment with bwa-mem (in case of fastq files)
 - Marking duplicate reads with picard
 - Removing low-quality reads (retain reads with mapping quality > 20)
-- Peak calling with MACS1.4/MACS2/DFilter (support more than one peak callers)
+- Peak calling with MACS1.4/MACS2/DFilter (support more than one peak callers and is controlled by config.yaml file)
 - Taking intersection between the peaks
 
 Note that PeakPairs.csv is used to specify ChIP-seq vs input pairs, and config.yaml is used for specifiying optional parameters in softwares.
@@ -45,10 +45,10 @@ cd rhpc_fix_snakemake_ChIPseq
 # install enviroment for running pipeline on darwin:
 /opt/anaconda3/bin/conda env create --file env/rhpc_fix_snakemake.yaml
 
-# Activate phantompeakqualtools
+# Activate phantompeakqualtools and go back to original directory
 cd Softwares/phantompeakqualtools
 chmod 777 run_spp.R
-cd ../
+cd ../..
 
 # Separately download and install bioepic package into the conda environment just created. 
 # This package could not be installed after the conda update/clean with pip from within the conda enviroment it must be installed explicitly
@@ -61,7 +61,6 @@ pip install -t /home/YOUR_USER_NAME/.conda/envs/rhpc_fix_SnakeMake/lib/python3.6
 
 # Activate your conda environment
 source activate rhpc_fix_SnakeMake
-
 ```
 
 
@@ -69,7 +68,8 @@ The most of softwares used in the pipeline is installed by conda or excuted in w
 Only exception is the phantompeak, the software used for estimating the fragment length that can be used by MACS2.
 Phantompeak tools is included as a separate software.
 
-We recommend to run the pipeline from a different location than pipeline path, like below:
+
+For running the pipeline on your bam files, we recommend to run the pipeline from a different location than pipeline path, like below:
 
 ```bash
 snakemake -s PATH_TO_PIPELINE/Snakefile --use-singularity --use-conda --cores=20 -p --singularity-args="-B /DATA:/DATA" &> run.log
@@ -79,7 +79,7 @@ With --use-conda option, the pipeline will create environments to run rules base
 The --use-singulairty option applies only to DFilter peak caller. The singularity container which holds a virtual environment of Ubuntu with DFilter was no longer available due to the hub site being down. The image has been saved and put into a shared enviroment and called explicitly in the src/peakcalling.smk file. The --singularity-args allows singularity image to be in the correct enviroment (/DATA/YOUR_USER_NAME).
 
 
-Note that the pipeline assumes that there is the following three files available at the location where the pipeline is executed:
+Note that the pipeline assumes that there is the following three files available at the location where the pipeline is executed. A set of example files is included with the repository:
 - config.yaml
 - DataList.csv
 - PeakPairs.csv
