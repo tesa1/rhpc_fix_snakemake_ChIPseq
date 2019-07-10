@@ -64,9 +64,9 @@ source activate rhpc_fix_SnakeMake
 ```
 
 
-The most of softwares used in the pipeline is installed by conda or excuted in wrapper.
-Only exception is the phantompeak, the software used for estimating the fragment length that can be used by MACS2.
-Phantompeak tools is included as a separate software.
+Most software used in the pipeline is installed by conda or excuted in wrapper.
+Only exceptions are phantompeak, the software used for estimating the fragment length that can be used by MACS2, and the bioepic python package.
+Both are included as separate software.
 
 
 For running the pipeline on your bam files, we recommend to run the pipeline from a different location than pipeline path, like below:
