@@ -19,6 +19,7 @@ Roughly, the pipeline takes the following steps to produce the outcome:
 - Alignment with bwa-mem (in case of fastq files)
 - Marking duplicate reads with picard
 - Removing low-quality reads (retain reads with mapping quality > 20)
+- Basic QC files (phantompeaktools and fastqc/multiqc)
 - Peak calling with MACS1.4/MACS2/DFilter (support more than one peak callers and is controlled by config.yaml file)
 - Taking intersection between the peaks
 
@@ -47,7 +48,7 @@ cd rhpc_fix_snakemake_ChIPseq
 
 # Activate phantompeakqualtools and go back to original directory
 cd Softwares/phantompeakqualtools
-chmod 777 run_spp.R
+chmod 755 run_spp.R
 cd ../..
 
 # Separately download and install bioepic package into the conda environment just created. 
