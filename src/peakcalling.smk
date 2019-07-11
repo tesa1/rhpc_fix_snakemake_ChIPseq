@@ -104,7 +104,7 @@ rule Dfilter_peakcalling:
         data=PATH_BAM+"{sample}.mq20.bed",
         input=lambda wildcards: PATH_BAM+ PeakCall.loc[PeakCall.Signal == wildcards.sample].Input +".mq20.bed"
     shadow: "shallow"
-    singularity: '/DATA/t.severson/dfilterv15_singularity/ChIPSeq.simg'
+    singularity: '/home/t.severson/resources/dfilterv15_singularity/ChIPSeq.simg'
     params:
         bs = config['dfilter']['bs'],
         ks = config['dfilter']['ks'],
