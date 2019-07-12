@@ -19,8 +19,8 @@ Roughly, the pipeline takes the following steps to produce the outcome:
 - Alignment with bwa-mem (in case of fastq files)
 - Marking duplicate reads with picard
 - Removing low-quality reads (retain reads with mapping quality > 20)
-- Basic QC files (phantompeaktools and fastqc/multiqc)
-- Peak calling with MACS1.4/MACS2/DFilter (support more than one peak callers and is controlled by config.yaml file)
+- Basic QC output (phantompeaktools and fastqc/multiqc)
+- Peak calling with MACS1.4/MACS2/DFilter (supports more than one peak caller and is controlled by config.yaml file)
 - Taking intersection between the peaks
 
 Note that PeakPairs.csv is used to specify ChIP-seq vs input pairs, and config.yaml is used for specifiying optional parameters in softwares.
@@ -33,17 +33,14 @@ The fix for the pipeline is preliminary used in linux environment with conda/sin
 For downloading repository & creating environment:
 
 ```bash
-# The script expects to be run from the /DATA/YOUR_USER_NAME folder so first move into that folder (eg. t.severson).
-cd /DATA/YOUR_USER_NAME
-
-# Download enviroment for running pipeline
+# Download enviroment for running pipeline somewhere into your ~/ directory.
 git clone https://github.com/tesa1/rhpc_fix_snakemake_ChIPseq/
 cd rhpc_fix_snakemake_ChIPseq
 
-# install enviroment for running pipeline on **harris**:
+# install enviroment for running pipeline on ** harris **:
 /opt/anaconda/bin/conda env create --file env/rhpc_fix_snakemake.yaml
 
-# install enviroment for running pipeline on **darwin**:
+# install enviroment for running pipeline on ** darwin **:
 /opt/anaconda3/bin/conda env create --file env/rhpc_fix_snakemake.yaml
 
 # Activate phantompeakqualtools and go back to original directory
@@ -77,7 +74,7 @@ snakemake -s PATH_TO_PIPELINE/Snakefile --use-singularity --use-conda --cores=20
 ```
 
 With --use-conda option, the pipeline will create environments to run rules based on .yaml files in env/.
-The --use-singulairty option applies only to DFilter peak caller. The singularity container which holds a virtual environment of Ubuntu with DFilter was no longer available due to the hub site being down. The image has been saved and put into a shared enviroment and called explicitly in the src/peakcalling.smk file. The --singularity-args allows singularity image to be in the correct enviroment (/DATA/YOUR_USER_NAME).
+The --use-singulairty option applies only to DFilter peak caller. The singularity container which holds a virtual environment of Ubuntu with DFilter was no longer available due to the singularity hub site being down. The image has been saved and put into a shared enviroment and is now called explicitly in the src/peakcalling.smk file. The --singularity-args allows singularity image to be in the correct enviroment (/DATA/YOUR_USER_NAME).
 
 
 Note that the pipeline assumes that there is the following three files available at the location where the pipeline is executed. A set of example files is included with the repository:
