@@ -45,7 +45,7 @@ cd rhpc_fix_snakemake_ChIPseq
 
 # Activate phantompeakqualtools and go back to original directory
 cd Softwares/phantompeakqualtools
-chmod 755 run_spp.R
+chmod 777 run_spp.R
 cd ../..
 
 # Separately download and install bioepic package into the conda environment just created. 
