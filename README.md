@@ -3,7 +3,7 @@
 
 
 This is a fix for the original snakemake-based Peak calling pipeline from Yongsoo Kim 
-(https://github.com/anoyaro84/snakemake_ChIPseq) used in Zwart lab at the Netherlands Cancer Institute.
+(https://github.com/anoyaro84/snakemake_ChIPseq) used in the Zwart lab at the Netherlands Cancer Institute.
 
 
 
