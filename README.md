@@ -70,7 +70,7 @@ Both are included as separate software.
 For running the pipeline on your bam files, we recommend to run the pipeline from a different location than pipeline path, like below:
 
 ```bash
-snakemake -s PATH_TO_PIPELINE/Snakefile --use-singularity --use-conda --cores=20 -p --singularity-args="-B /DATA:/DATA" &> run.log
+snakemake -s PATH_TO_PIPELINE/Snakefile --use-singularity --use-conda --cores=10 -p --singularity-args="-B /DATA:/DATA" &> run.log
 ```
 
 With --use-conda option, the pipeline will create environments to run rules based on .yaml files in env/.
