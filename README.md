@@ -1,16 +1,17 @@
-# This is a fix for RHPC conda update and clean that destroyed all hardlinks for ChIP-seq analysis pipeline based on snakemake
+# This is a preliminary fix for RHPC conda update and clean that destroyed all hardlinks for ChIP-seq analysis pipeline based on snakemake
 
 
 
-This is a fix for the original snakemake-based Peak calling pipeline from Yongsoo Kim 
+This is a preliminary fix for the original snakemake-based Peak calling pipeline from Yongsoo Kim 
 (https://github.com/anoyaro84/snakemake_ChIPseq) used in the Zwart lab at the Netherlands Cancer Institute.
 
 
 
 There have been minor changes to the pipeline, but the versions of major software such as MACS, MACS2, DFilter, samtools, bedtools, python, etc remain the same. The output of the fix pipeline has been compared and with previously analyzed data and there are no differences. The html document in this repository shows the results of that analysis.
 
+## 
 
-The minor changes to the pipeline, however did create a bug which means that the analysis can only be run in the /DATA/YOUR_USER_NAME/ directory. This does not affect analysis but does mean you are restricted in where you execute from. Most users only have a /DATA/YOUR_USER_NAME/ directory on harris.
+The minor changes to the pipeline however did create a bug which means that the analysis can only be run in the /DATA/YOUR_USER_NAME/ directory. This does not affect analysis but does mean you are restricted in where you execute from. Most users only have a /DATA/YOUR_USER_NAME/ directory on harris.
 
 ##
 
