@@ -9,6 +9,9 @@ This is a fix for the original snakemake-based Peak calling pipeline from Yongso
 
 There have been minor changes to the pipeline, but the versions of major software such as MACS, MACS2, DFilter, samtools, bedtools, python, etc remain the same. The output of the fix pipeline has been compared and with previously analyzed data and there are no differences. The html document in this repository shows the results of that analysis.
 
+
+The minor changes to the pipeline, however did create a bug which means that the analysis can only be run in the /DATA/YOUR_USER_NAME/ directory. This does not affect analysis but does mean you are restricted in where you execute from. Most users only have a /DATA/YOUR_USER_NAME/ directory on harris.
+
 ##
 
 The pipeline obtains ChIP-seq data from diverse sources (remote/local path or GEO) and process them accordingly to produce peak lists in bed format and coverage profiles in tdf format.
@@ -28,7 +31,7 @@ Note that PeakPairs.csv is used to specify ChIP-seq vs input pairs, and config.y
 ## Installation ##
 
 
-The fix for the pipeline is preliminary used in linux environment with conda/singularity available. Singularity is used  only for DFilter (one of two peak callers used) within the pipeline. Currently, the pipeline is tested with *conda version 4.7.5* and singularity version 2.4.2-master.g91881f7 on July 9th, 2019. Note, if you are on harris, you will need to use conda version 4.7.5 in /opt/anaconda/bin/ and if you are on darwin you will need to use conda version 4.7.5 in /opt/anaconda3/bin/
+The fix for the pipeline is preliminary used in linux environment with conda/singularity available. Singularity is used  only for DFilter (one of two peak callers used) within the pipeline. Currently, the pipeline is tested with *conda version 4.7.5* and singularity version 2.4.2-master.g91881f7 on July 9th, 2019. Note, if you are on harris, you will need to use conda version 4.7.5 in /opt/anaconda/bin/. This version of the pipeline is tested on harris /DATA/YOUR_USER_NAME/.
 
 For downloading repository & creating environment:
 
@@ -74,7 +77,7 @@ snakemake -s PATH_TO_PIPELINE/Snakefile --use-singularity --use-conda --cores=10
 ```
 
 With --use-conda option, the pipeline will create environments to run rules based on .yaml files in env/.
-The --use-singulairty option applies only to DFilter peak caller. The singularity container which holds a virtual environment of Ubuntu with DFilter was no longer available due to the singularity hub site being down. The image has been saved and put into a shared enviroment and is now called explicitly in the src/peakcalling.smk file. The --singularity-args allows singularity image to be in the correct enviroment (/DATA/YOUR_USER_NAME).
+The --use-singulairty option applies only to DFilter peak caller. The singularity container which holds a virtual environment of Ubuntu with DFilter was no longer available from the original pipeline due to the singularity hub site being down. The image has been saved and put into a shared enviroment and is now called explicitly in the src/peakcalling.smk file. The --singularity-args allows pipeline to identify the singularity image to be in the correct enviroment.
 
 
 Note that the pipeline assumes that there is the following three files available at the location where the pipeline is executed. A set of example files is included with the repository:
