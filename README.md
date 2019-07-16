@@ -37,7 +37,7 @@ The fix for the pipeline is preliminary used in linux environment with conda/sin
 For downloading repository & creating environment:
 
 ```bash
-# Download enviroment for running pipeline somewhere into your ~/ directory.
+# Download enviroment for running pipeline somewhere into your /DATA/YOUR_USER_NAME/ directory.
 git clone https://github.com/tesa1/rhpc_fix_snakemake_ChIPseq/
 cd rhpc_fix_snakemake_ChIPseq
 
