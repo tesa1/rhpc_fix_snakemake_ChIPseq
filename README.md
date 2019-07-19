@@ -1,5 +1,7 @@
 # This is a preliminary fix for RHPC conda update and clean that destroyed all hardlinks for ChIP-seq analysis pipeline based on snakemake
 
+# Note, this preliminary fix has only been tested on bam files for peak calling, not on fastq files for alignment.
+
 
 
 This is a preliminary fix for the original snakemake-based Peak calling pipeline from Yongsoo Kim 
